@@ -24,7 +24,7 @@ class BookSlotAction
         $date = $request->date;
 
         if (!$date) {
-            return response()->json(['error' => 'Date is required'], 400);
+            return response()->json(['error' => trans('common.date_required')], 400);
         }
 
         $dayName = Carbon::parse($date)->format('l');
@@ -34,7 +34,7 @@ class BookSlotAction
             ->first();
 
         if (!$availability) {
-            return response()->json(['error' => 'No availability found for this day.'], 404);
+            return response()->json(['error' => trans('common.availablity_not_found')], 404);
         }
 
         $formattedTime = date('H:i:s', strtotime($request->time));
@@ -45,7 +45,7 @@ class BookSlotAction
             ->exists();
 
         if ($alreadyBooked) {
-            return response()->json(['message' => 'This slot is already booked.'], 409);
+            return response()->json(['message' => trans('common.already_booked')], 409);
         }
 
         $booking = Booking::create([

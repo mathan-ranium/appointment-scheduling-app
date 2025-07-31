@@ -44,7 +44,7 @@ class AvailabilityController extends Controller
         $updatedAvailability = $action->handle($request, $availability);
 
         return response()->json([
-            'message' => 'Availability updated',
+            'message' => trans('common.availability_update'),
             'data' => $updatedAvailability
         ]);
     }

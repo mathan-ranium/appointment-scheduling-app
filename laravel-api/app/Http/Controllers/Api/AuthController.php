@@ -43,7 +43,7 @@ class AuthController extends Controller
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()->json([
-            'message' => 'Registration successful',
+            'message' => trans('common.reg_success'),
             'user'    => $user,
             'token'   => $token,
         ], 201);
@@ -63,7 +63,7 @@ class AuthController extends Controller
         // Check credentials
         if (!$user || !Hash::check($request->password, $user->password)) {
             return response()->json([
-                'message' => 'Please check your credentials and try again.'
+                'message' => trans('common.password_validation')
             ], 401);
         }
 
@@ -71,7 +71,7 @@ class AuthController extends Controller
         $token = $user->createToken('auth_token')->plainTextToken;
 
         return response()->json([
-            'message' => 'Login successful',
+            'message' => trans('common.login_success'),
             'user'    => $user,
             'token'   => $token,
         ], 200);
@@ -88,7 +88,7 @@ class AuthController extends Controller
         $request->user()->currentAccessToken()->delete();
 
         return response()->json([
-            'message' => 'Logged out successfully'
+            'message' => trans('common.logout_success')
         ], 200);
     }
 

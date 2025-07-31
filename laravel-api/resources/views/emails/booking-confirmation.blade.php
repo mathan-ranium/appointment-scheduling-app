@@ -164,37 +164,37 @@
 <body>
     <div class="email-container">
         <div class="header">
-            <h2><span class="icon">📅</span> Booking Confirmed!</h2>
+            <h2><span class="icon">📅</span> {{trans('common.mail')}}</h2>
         </div>
 
         <div class="content">
             <p>Dear {{ $type == 'guest'? $data['name'] : $data['host_name'] }},</p>
 
-            <p>Your booking has been confirmed with the <strong>{{ $type == 'guest'? 'host '.$data['host_name'] : $data['name'] }}</strong>.</p>
+            <p>{{trans('common.mail1')}} <strong>{{ $type == 'guest'? 'host '.$data['host_name'] : $data['name'] }}</strong>.</p>
 
-            <p><strong>Details:</strong></p>
+            <p><strong>{{trans('common.mail2')}}</strong></p>
             <ul class="details-list">
-                <li><strong>Title:</strong> {{ $data['title'] }}</li>
-                <li><strong>Date:</strong> {{ \Carbon\Carbon::parse($data['date'])->toFormattedDateString() }}</li>
-                <li><strong>Time:</strong> {{ $data['booked_time'] }}</li>
+                <li><strong>{{trans('common.mail3')}}</strong> {{ $data['title'] }}</li>
+                <li><strong>{{trans('common.mail4')}}</strong> {{ \Carbon\Carbon::parse($data['date'])->toFormattedDateString() }}</li>
+                <li><strong>{{trans('common.mail5')}}</strong> {{ $data['booked_time'] }}</li>
             </ul>
 
             <div class="meet-section">
-                <h3>🔗 Google Meet Invitation</h3>
+                <h3>🔗 {{trans('common.mail6')}}</h3>
                 <p>
-                    You can join the meeting using the link below:
+                    {{trans('common.mail7')}}
                     <br>
                     <!-- dummy link -->
-                    <a href="https://meet.google.com/xyz-abc-def" class="meet-link">Join Meeting Here</a>
+                    <a href="https://meet.google.com/xyz-abc-def" class="meet-link">{{trans('common.mail8')}}</a>
                 </p>
-                <p class="small-note">Please join at the right time.</p>
+                <p class="small-note">{{trans('common.mail9')}}</p>
             </div>
         </div>
 
         <hr>
 
         <div class="footer">
-            <p>Thank you,<br>The SlotBooker Team</p>
+            <p>{{trans('common.mail10')}}<br>{{trans('common.mail11')}}</p>
         </div>
     </div>
 </body>
